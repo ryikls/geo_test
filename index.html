@@ -25,7 +25,60 @@ body[data-theme="graphite"]{--bg:#17191d;--ink:#eceff3;--edge:#454b55;--acc:#a8b
 .object-card strong{letter-spacing:.01em}
 .object-card small{max-width:220px;line-height:1.4}
 @media(max-width:560px){.object-cards{gap:9px}.object-card.selected{padding:11px}.object-icon{width:44px;height:44px;border-radius:13px}}
-</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><style>body{font-family:"Nunito Sans",system-ui,sans-serif}h1,h2,h3,.subtitle,#welcome-title{font-family:"Exo 2","Nunito Sans",sans-serif}header h1,header .subtitle,#home h2,#home p,.category-card,.category-card *{font-weight:800!important}</style></head><body><div id="welcome" class="theme-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title"><div class="theme-dialog"><div class="theme-dialog-head"><div><h2 id="welcome-title">Добро пожаловать в географический тест!</h2><p id="welcome-sub">Изучайте географию в интерактивном формате</p></div></div><p id="welcome-desc">Выбирайте острова, полуострова, пустыни или материки, находите объекты на карте и проверяйте свои знания. Можно выбрать число вопросов и тему оформления.</p><label for="language-select" id="language-label">Язык сайта</label><select id="language-select" style="width:100%"><option value="ru">Русский</option><option value="be">Беларуская</option><option value="en">English</option><option value="fr">Français</option></select><button id="welcome-start" style="width:100%;margin-top:18px">Перейти к сайту →</button></div></div><div id="theme-panel" class="theme-overlay hide" role="dialog" aria-modal="true" aria-labelledby="theme-title"><div class="theme-dialog"><div class="theme-dialog-head"><div><h2 id="theme-title">Темы оформления</h2><p>Выберите внешний вид теста</p></div><button type="button" id="close-themes" class="ghost theme-close" aria-label="Закрыть">✕</button></div><div id="theme-options" class="theme-options"></div><p class="theme-note">Выбор сохранится при следующем открытии сайта.</p></div></div><main><header class="site-header"><div><h1>Тест по географии</h1><p class="subtitle">Острова, полуострова, пустыни и тест по материкам</p></div><button type="button" id="music-toggle" class="theme-icon" style="right:52px" aria-label="Включить музыку" title="Фоновая музыка">♫</button><button type="button" id="open-themes" class="theme-icon" aria-label="Открыть темы оформления" title="Темы оформления">🎨</button></header>
+</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"><style>body{font-family:"Nunito Sans",system-ui,sans-serif}h1,h2,h3,.subtitle,#welcome-title{font-family:"Exo 2","Nunito Sans",sans-serif}header h1,header .subtitle,#home h2,#home p,.category-card,.category-card *{font-weight:800!important}</style><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><style>
+/* Welcome language picker: centered, larger and visually distinct */
+#welcome.theme-overlay{
+  align-items:center!important;
+  justify-content:center!important;
+  padding:24px!important;
+  overflow-y:auto!important;
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+}
+#welcome .theme-dialog{
+  width:min(560px, calc(100vw - 36px))!important;
+  max-height:min(82dvh, 760px)!important;
+  padding:clamp(24px, 4vw, 38px)!important;
+  border-radius:26px!important;
+  box-shadow:0 28px 90px #0008, 0 0 0 1px #ffffff18 inset!important;
+  animation:welcomeDialogIn .28s ease-out both;
+  font-family:"Manrope","Nunito Sans",sans-serif!important;
+}
+#welcome #welcome-title{
+  font-family:"Space Grotesk","Manrope",sans-serif!important;
+  font-size:clamp(25px, 3.4vw, 34px)!important;
+  line-height:1.15;
+  letter-spacing:-.035em;
+  margin-bottom:10px;
+}
+#welcome #welcome-sub{font-size:16px!important;line-height:1.5}
+#welcome #welcome-desc{font-size:16px!important;line-height:1.7;margin:20px 0}
+#welcome #language-label{display:block;font-size:15px;font-weight:800;margin:18px 0 9px}
+#welcome #language-select{
+  min-height:56px!important;
+  font-size:17px!important;
+  border-radius:14px!important;
+  padding:12px 15px!important;
+  cursor:pointer;
+}
+#welcome #welcome-start{
+  min-height:58px!important;
+  border-radius:15px!important;
+  font-size:17px!important;
+  font-weight:800!important;
+  letter-spacing:.01em;
+  box-shadow:0 8px 22px #0002;
+  cursor:pointer;
+  transition:transform .15s ease,filter .15s ease;
+}
+#welcome #welcome-start:hover{transform:translateY(-2px);filter:brightness(1.06)}
+#welcome #welcome-start:active{transform:translateY(0)}
+@keyframes welcomeDialogIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:520px){
+  #welcome.theme-overlay{padding:12px!important}
+  #welcome .theme-dialog{width:calc(100vw - 24px)!important;padding:22px!important;border-radius:20px!important}
+}
+</style></head><body><div id="welcome" class="theme-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title"><div class="theme-dialog"><div class="theme-dialog-head"><div><h2 id="welcome-title">Добро пожаловать в географический тест!</h2><p id="welcome-sub">Изучайте географию в интерактивном формате</p></div></div><p id="welcome-desc">Выбирайте острова, полуострова, пустыни или материки, находите объекты на карте и проверяйте свои знания. Можно выбрать число вопросов и тему оформления.</p><label for="language-select" id="language-label">Язык сайта</label><select id="language-select" style="width:100%"><option value="ru">Русский</option><option value="be">Беларуская</option><option value="en">English</option><option value="fr">Français</option></select><button id="welcome-start" style="width:100%;margin-top:18px">Перейти к сайту →</button></div></div><div id="theme-panel" class="theme-overlay hide" role="dialog" aria-modal="true" aria-labelledby="theme-title"><div class="theme-dialog"><div class="theme-dialog-head"><div><h2 id="theme-title">Темы оформления</h2><p>Выберите внешний вид теста</p></div><button type="button" id="close-themes" class="ghost theme-close" aria-label="Закрыть">✕</button></div><div id="theme-options" class="theme-options"></div><p class="theme-note">Выбор сохранится при следующем открытии сайта.</p></div></div><main><header class="site-header"><div><h1>Тест по географии</h1><p class="subtitle">Острова, полуострова, пустыни и тест по материкам</p></div><button type="button" id="music-toggle" class="theme-icon" style="right:52px" aria-label="Включить музыку" title="Фоновая музыка">♫</button><button type="button" id="open-themes" class="theme-icon" aria-label="Открыть темы оформления" title="Темы оформления">🎨</button></header>
 <section id="intro" class="card chooser"><h2>Выбрать объекты</h2><p class="subtitle">Выберите одну или несколько категорий для теста.</p><div class="object-cards"><button type="button" class="object-card" data-cat="isl"><span class="object-icon">🏝️</span><strong>Острова</strong><small id="count-isl">Загрузка объектов…</small></button><button type="button" class="object-card" data-cat="des"><span class="object-icon">🏜️</span><strong>Пустыни</strong><small id="count-des">Загрузка объектов…</small></button><button type="button" class="object-card" data-cat="pen"><span class="object-icon">🗺️</span><strong>Полуострова</strong><small id="count-pen">Загрузка объектов…</small></button><button type="button" class="object-card" data-continent-quiz><span class="object-icon">🌍</span><strong>Материки</strong><small>Площадь, высоты и мысы на карте</small></button></div><button id="go" style="width:100%;margin-top:18px">Настроить тест →</button><p class="author">Автор исходного проекта: <a href="https://bumprom.ru" target="_blank" rel="noopener noreferrer">Bumprom</a></p></section>
 <section id="continent-quiz" class="card result-card hide"><div id="continent-quiz-content"></div></section>
 <section id="setup" class="card hide"><h2>Настройки тестирования</h2><div class="setup-grid"><div class="setup-box category-state" aria-hidden="true"><b>Выбранная категория</b><label><input type="checkbox" value="isl" checked tabindex="-1"> Острова</label><label><input type="checkbox" value="pen" tabindex="-1"> Полуострова</label><label><input type="checkbox" value="des" tabindex="-1"> Пустыни</label></div><div class="setup-box"><b>Карта для теста</b><p>Используется базовая карта мира.</p></div><div class="setup-box"><b>Параметры</b><label>Количество вопросов<br><select id="cnt"><option>10</option><option selected>20</option><option>40</option><option value="999">Все объекты выбранных категорий</option></select></label><label><input type="checkbox" id="hint"> Подсказывать тип объекта</label><label><input type="checkbox" id="automode" checked> Автоматически менять категорию карты</label></div></div><p style="color:var(--mut)">Полуострова и пустыни отображаются контурами там, где заданы координаты границ; для остальных объектов используется маркер. Контуры учебные и могут приближённо отражать географическую классификацию. Цвет показывает, с какой попытки дан ответ.</p><button id="start" style="width:100%">Начать тест →</button></section>
@@ -477,12 +530,26 @@ function applyLocale(code){
  document.querySelectorAll('#language-select').forEach(el=>el.value=code);
 }
 function setLanguage(code){if(!['ru','be','en','fr'].includes(code))code='ru';localStorage.setItem('geoQuizLanguage',code);applyLocale(code);}
-document.getElementById('language-select').value=localStorage.getItem('geoQuizLanguage')||'ru';
-document.getElementById('language-select').addEventListener('change',e=>setLanguage(e.target.value));
-document.getElementById('welcome-start').addEventListener('click',()=>{document.getElementById('welcome').classList.add('hide');});
-setLanguage(document.getElementById('language-select').value);
-// Newly rendered quiz questions, feedback and result screens are localized too.
-new MutationObserver(()=>{const code=localStorage.getItem('geoQuizLanguage')||'ru';if(code!=='ru')applyLocale(code);}).observe(document.body,{subtree:true,childList:true,characterData:true});
+const languageSelect=document.getElementById('language-select');
+const welcomeLayer=document.getElementById('welcome');
+const welcomeStart=document.getElementById('welcome-start');
+let selectedLanguage='ru';
+try { selectedLanguage=localStorage.getItem('geoQuizLanguage')||'ru'; } catch(e) {}
+if(!['ru','be','en','fr'].includes(selectedLanguage)) selectedLanguage='ru';
+languageSelect.value=selectedLanguage;
+languageSelect.addEventListener('change',e=>{
+  setLanguage(e.target.value);
+});
+welcomeStart.addEventListener('click',()=>{
+  // Save/apply the selected language first, then close the welcome screen.
+  try { setLanguage(languageSelect.value); } catch(e) { document.documentElement.lang=languageSelect.value||'ru'; }
+  welcomeLayer.classList.add('hide');
+  welcomeLayer.style.display='none';
+  welcomeLayer.setAttribute('aria-hidden','true');
+  document.body.classList.remove('welcome-open');
+});
+setLanguage(languageSelect.value);
+// Avoid a global MutationObserver here: the map contains a large SVG and rescanning it on every mutation can freeze the page.
 </script>
 <style>
 #continent-map-wrap.cape-expanded{position:fixed!important;inset:12px!important;z-index:9998!important;width:auto!important;height:auto!important;max-height:none!important;border-radius:14px!important;box-shadow:0 0 0 100vmax #000b!important}
